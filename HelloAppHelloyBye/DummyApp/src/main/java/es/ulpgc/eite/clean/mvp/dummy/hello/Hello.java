@@ -10,7 +10,7 @@ import es.ulpgc.eite.clean.mvp.Presenter;
  * Created by Luis on 12/11/16.
  */
 
-public interface Hello {
+public interface Hello  {
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,9 @@ public interface Hello {
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
     void onSayHelloBtnClicked() throws InterruptedException;
-    void onGoToByeBtnClicked();
+    void onGoToByeBtnClicked() throws InterruptedException;
+
+    String getHelloText();
   }
 
   /**
@@ -53,6 +55,10 @@ public interface Hello {
     void setText(String txt);
     void setSayHelloLabel(String txt);
     void setGoToByeLabel(String txt);
+
+    void setSayByeLabel(String txt);
+
+    void setGoToHelloLabel(String txt);
   }
 
   /**
@@ -60,9 +66,23 @@ public interface Hello {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
     void onChangeMsgByBtnClicked();
+
+    void onChangeMsgByHelloBtnClicked();
+
+    void onChangeMsgByByeBtnClicked();
+
     String getText();
+
+    String getTextofHello();
+
+    String getTextofBye();
+
     String getSayHelloLabel();
     String getGoToByeLabel();
+
+    String getGoToHelloLabel();
+
+    String getSayByeLabel();
   }
 
   /**

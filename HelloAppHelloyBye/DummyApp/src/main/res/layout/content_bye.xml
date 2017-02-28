@@ -31,26 +31,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
-
-
             <Button
-
-                android:text="SayBye"
+                android:text="Say Bye"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sayByebtn"
+                android:id="@+id/sayByeBtn"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="Go To Hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/goToHelloBtn"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center_horizontal"/>
+
             <Space android:layout_width="12dp" android:layout_height="wrap_content"
                 tools:targetApi="ice_cream_sandwich" />
 
-            <Button
-                android:text="GoToHello"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/goToHellobtn"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_gravity="center_horizontal"/>
         </LinearLayout>
         <Space
             android:layout_width="12dp" android:layout_height="wrap_content"

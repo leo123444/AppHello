@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:screenOrientation="portrait"
+
     tools:context="es.ulpgc.eite.clean.mvp.dummy.hello.HelloView">
 
     <android.support.design.widget.AppBarLayout

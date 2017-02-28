@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
+import es.ulpgc.eite.clean.mvp.dummy.bye.Bye;
 import es.ulpgc.eite.clean.mvp.dummy.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.dummy.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.dummy.hello.Hello;
@@ -14,6 +15,7 @@ public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
   private HelloState toHelloState, helloToState;
+
 
   @Override
   public void onCreate() {
@@ -42,6 +44,11 @@ public class App extends Application implements Mediator, Navigator {
       presenter.setTextVisibility(toHelloState.textVisibility);
     }
     presenter.onScreenStarted();
+  }
+
+  @Override
+  public void startingByeScreen(Bye.ToBye presenter) throws InterruptedException {
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

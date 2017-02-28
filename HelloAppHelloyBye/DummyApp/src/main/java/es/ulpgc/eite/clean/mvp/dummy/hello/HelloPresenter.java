@@ -9,6 +9,8 @@ import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.dummy.app.Mediator;
 
+import static java.lang.Thread.sleep;
+
 public class HelloPresenter extends GenericPresenter
     <Hello.PresenterToView, Hello.PresenterToModel, Hello.ModelToPresenter, HelloModel>
     implements Hello.ViewToPresenter, Hello.ModelToPresenter, Hello.HelloTo, Hello.ToHello {
@@ -18,7 +20,7 @@ public class HelloPresenter extends GenericPresenter
   private boolean buttonClicked;
   private boolean textVisible;
   private boolean progressBarVisible;
-
+  HelloView hview;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -30,6 +32,7 @@ public class HelloPresenter extends GenericPresenter
   @Override
   public void onCreate(Hello.PresenterToView view) {
     super.onCreate(es.ulpgc.eite.clean.mvp.dummy.hello.HelloModel.class, this);
+    this.hview=new HelloView();
     setView(view);
     Log.d(TAG, "calling onCreate()");
 
@@ -98,8 +101,10 @@ public class HelloPresenter extends GenericPresenter
   public void onSayHelloBtnClicked() throws InterruptedException {
     Log.d(TAG, "calling onSayHelloBtnClicked()");
     if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
-      getView().setText(getModel().getText());
+
+      getModel().onChangeMsgByHelloBtnClicked();
+       sleep(5000);
+      getView().setText(getModel().getTextofHello());
       textVisible = true;
       buttonClicked = true;
       progressBarVisible = false;
@@ -108,11 +113,15 @@ public class HelloPresenter extends GenericPresenter
   }
 
   @Override
-  public void onGoToByeBtnClicked() {
+  public void onGoToByeBtnClicked() throws InterruptedException {
     Log.d(TAG, "calling onGoToByeBtnClicked()");
     if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
-      getView().setText(getModel().getText());
+
+
+      getModel().onChangeMsgByByeBtnClicked();
+      sleep(5000);
+      getView().setText(getModel().getTextofBye());
+
       textVisible = true;
       buttonClicked = true;
       progressBarVisible = false;
@@ -204,5 +213,10 @@ public class HelloPresenter extends GenericPresenter
       }
     }
   }
-
+public String getHelloText(){
+  return getModel().getTextofHello();
+}
+public String getByeText(){
+  return getModel().getTextofBye();
+}
 }

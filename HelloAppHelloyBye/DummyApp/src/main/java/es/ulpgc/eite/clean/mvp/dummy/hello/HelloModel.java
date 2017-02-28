@@ -3,12 +3,15 @@ package es.ulpgc.eite.clean.mvp.dummy.hello;
 import es.ulpgc.eite.clean.mvp.GenericModel;
 
 
-public class HelloModel extends GenericModel<Hello.ModelToPresenter>
+public class HelloModel  extends GenericModel<Hello.ModelToPresenter>
     implements Hello.PresenterToModel {
 
   private String helloText;
+  private String ByeText;
   private String sayHelloLabel;
   private String goToByeLabel;
+  private String SayByeLabel;
+  private String goToHelloLabel;
   private int numOfTimes;
   private String msgText;
 
@@ -24,7 +27,10 @@ public class HelloModel extends GenericModel<Hello.ModelToPresenter>
 
     sayHelloLabel = "Say Hello";
     goToByeLabel = "Go to Bye";
+    SayByeLabel="Say Bye";
+    goToHelloLabel="goToHello";
     helloText = "Hello World!";
+    ByeText="Bye World!";
   }
 
   /**
@@ -44,14 +50,30 @@ public class HelloModel extends GenericModel<Hello.ModelToPresenter>
 
   @Override
   public void onChangeMsgByBtnClicked() {
-    msgText = helloText;
+
   }
 
   @Override
+  public void onChangeMsgByHelloBtnClicked() {
+    msgText = helloText;
+  }
+  @Override
+  public void onChangeMsgByByeBtnClicked() {
+    msgText = ByeText;
+  }
+  @Override
   public String getText() {
-    return msgText;
+    return null;
   }
 
+  @Override
+  public String getTextofHello() {
+    return helloText;
+  }
+  @Override
+  public String getTextofBye() {
+    return ByeText;
+  }
   @Override
   public String getSayHelloLabel() {
     return sayHelloLabel;
@@ -61,4 +83,14 @@ public class HelloModel extends GenericModel<Hello.ModelToPresenter>
   public String getGoToByeLabel() {
     return goToByeLabel;
   }
+  @Override
+  public String getGoToHelloLabel() {
+    return goToHelloLabel;
+  }
+
+  @Override
+  public String getSayByeLabel() {
+    return SayByeLabel;
+  }
+
 }

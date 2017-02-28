@@ -31,7 +31,7 @@ public class ByeView
 
     progressBar = (ProgressBar) findViewById(R.id.Progresando);
 
-    sayByeBtn = (Button) findViewById(R.id.sayByebtn);
+    sayByeBtn = (Button) findViewById(R.id.sayByeBtn);
     sayByeBtn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -43,15 +43,20 @@ public class ByeView
       }
     });
 
-    goToHelloButton = (Button) findViewById(R.id.goToHellobtn);
+    goToHelloButton = (Button) findViewById(R.id.goToHelloBtn);
     goToHelloButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        getPresenter().onGoToHelloBtnClicked();
-      }
-    });
-  }
-
+                                           @Override
+                                           public void onClick(View view) {
+                                               goToHelloButton.setText("go To Bye");
+                                               sayByeBtn.setText("say Hello");
+                                               sayByeBtn.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View view) {
+                                                       getPresenter().onGoToHelloBtnClicked();
+                                                   }
+                                               });
+                                           }
+                                       });}
   /**
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
@@ -133,4 +138,10 @@ public class ByeView
   public void setGoToHelloLabel(String txt) {
     goToHelloButton.setText(txt);
   }
+   public Button getSayByeBtn(){
+       return this.sayByeBtn;
+   }
+    public Button getGoToHelloBtn(){
+        return this.goToHelloButton;
+    }
 }
